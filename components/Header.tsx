@@ -18,6 +18,9 @@ export function Header() {
           <a href="#pain" className="transition hover:text-white">
             הבעיה
           </a>
+          <a href="#audience" className="transition hover:text-white">
+            למי זה מתאים
+          </a>
           <a href="#solution" className="transition hover:text-white">
             הפתרון
           </a>

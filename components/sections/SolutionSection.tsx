@@ -22,7 +22,7 @@ export function SolutionSection() {
               key={f.title}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-surface/40 p-6 ring-0 transition hover:border-accent/30"
             >
-              <div className="absolute -left-8 -top-8 h-24 w-24 rounded-full bg-accent/10 blur-2xl transition group-hover:bg-accent/20" />
+              <div className="absolute -start-8 -top-8 h-24 w-24 rounded-full bg-accent/10 blur-2xl transition group-hover:bg-accent/20" />
               <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-sm font-bold text-accent ring-1 ring-accent/25">
                 {i + 1}
               </span>

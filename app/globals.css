@@ -9,10 +9,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   @apply min-h-screen bg-background text-slate-100 antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {

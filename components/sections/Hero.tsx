@@ -13,7 +13,7 @@ export function Hero() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(37,211,102,0.15),transparent)]" />
       <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center lg:gap-8">
-        <div className="text-center lg:text-right">
+        <div className="text-center lg:text-start">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
             SameerDev · אתרים לעסקים קטנים ובינוניים
           </p>
@@ -22,6 +22,9 @@ export function Hero() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">
             אתר פשוט, מהיר, מותאם לנייד עם כפתור וואטסאפ
+          </p>
+          <p className="mx-auto mt-3 max-w-lg text-center text-sm text-slate-500 lg:mx-0 lg:text-start">
+            מתאים לעסקים קטנים ובינוניים שרוצים יותר פניות בלי להסתבך
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
             <Button
@@ -38,7 +41,7 @@ export function Hero() {
               צפה במחירים
             </Button>
           </div>
-          <p className="mt-3 text-center text-xs text-slate-500 lg:text-right">נשארו 5 מקומות השבוע</p>
+          <p className="mt-3 text-center text-xs text-slate-500 lg:text-start">נשארו 5 מקומות השבוע</p>
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted lg:justify-start">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
