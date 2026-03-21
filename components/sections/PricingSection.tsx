@@ -1,6 +1,6 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsappLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 
 const plans = [
@@ -33,7 +33,7 @@ const plans = [
 ];
 
 export function PricingSection() {
-  const wa = getWhatsAppUrl();
+  const wa = getWhatsappLink();
 
   return (
     <section id="pricing" className="scroll-mt-24 border-t border-white/5 px-4 py-16 sm:px-6 sm:py-20">

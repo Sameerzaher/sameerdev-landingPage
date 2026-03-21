@@ -1,9 +1,9 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsappLink } from "@/lib/whatsapp";
 
 export function Header() {
-  const wa = getWhatsAppUrl();
+  const wa = getWhatsappLink();
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-xl">

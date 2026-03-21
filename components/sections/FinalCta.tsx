@@ -1,9 +1,9 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsappLink } from "@/lib/whatsapp";
 
 export function FinalCta() {
-  const wa = getWhatsAppUrl();
+  const wa = getWhatsappLink();
 
   return (
     <section className="px-4 pb-20 pt-4 sm:px-6 sm:pb-24">

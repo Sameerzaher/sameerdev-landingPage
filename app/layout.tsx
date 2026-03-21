@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Heebo } from "next/font/google";
 import "./globals.css";
 
@@ -9,11 +10,13 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
-  title: "SameerDev | אתר לעסק תוך 3–5 ימים",
-  description: "אתר פשוט, מהיר ומותאם לנייד עם כפתור וואטסאפ — ממוקד פניות ולקוחות חדשים.",
+  title: "בניית אתרים לעסקים קטנים | SameerDev",
+  description:
+    "אתר מקצועי לעסק שלך תוך 3-5 ימים עם חיבור לוואטסאפ לקבלת לקוחות",
   openGraph: {
-    title: "SameerDev",
-    description: "אתר לעסק שלך תוך 3–5 ימים שמביא לך יותר פניות",
+    title: "בניית אתרים לעסקים קטנים | SameerDev",
+    description:
+      "אתר מקצועי לעסק שלך תוך 3-5 ימים עם חיבור לוואטסאפ לקבלת לקוחות",
     locale: "he_IL",
     type: "website",
   },
@@ -26,7 +29,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="he" dir="rtl" className={heebo.variable}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <FloatingWhatsApp />
+      </body>
     </html>
   );
 }

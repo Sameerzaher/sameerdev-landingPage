@@ -1,10 +1,10 @@
 import { Button } from "@/components/Button";
 import { HeroMockup } from "@/components/HeroMockup";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { getWhatsappLink } from "@/lib/whatsapp";
 
 export function Hero() {
-  const wa = getWhatsAppUrl();
+  const wa = getWhatsappLink();
 
   return (
     <section
@@ -38,7 +38,8 @@ export function Hero() {
               צפה במחירים
             </Button>
           </div>
-          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted lg:justify-start">
+          <p className="mt-3 text-center text-xs text-slate-500 lg:text-right">נשארו 5 מקומות השבוע</p>
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted lg:justify-start">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               מסירה מהירה
