@@ -24,12 +24,10 @@ const demos = [
 
 export function DemoSection() {
   return (
-    <section id="demo" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20">
+    <section id="demo" className="section-y scroll-mt-24">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">איך זה נראה בפועל</h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted sm:text-base">
-          תצוגה מקדימה לסוגי עסקים — מוקאפ נקי עם דגש על פנייה בוואטסאפ.
-        </p>
+        <h2 className="section-heading">איך זה נראה בפועל</h2>
+        <p className="section-sub max-w-xl">תצוגה מקדימה לסוגי עסקים — מוקאפ נקי עם דגש על פנייה בוואטסאפ.</p>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {demos.map((d) => (
             <figure

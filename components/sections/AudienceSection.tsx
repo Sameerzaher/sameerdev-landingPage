@@ -11,12 +11,10 @@ const cardDescription = "עסקים שרוצים יותר לקוחות עם נו
 
 export function AudienceSection() {
   return (
-    <section id="audience" className="scroll-mt-24 border-y border-white/5 px-4 py-16 sm:px-6 sm:py-20">
+    <section id="audience" className="section-y scroll-mt-24 border-y border-white/5">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">למי זה מתאים</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted sm:text-base">
-          פתרון מהיר ופשוט לעסקים שרוצים יותר פניות בלי להסתבך
-        </p>
+        <h2 className="section-heading">למי זה מתאים</h2>
+        <p className="section-sub">פתרון מהיר ופשוט לעסקים שרוצים יותר פניות בלי להסתבך</p>
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {audience.map((item) => {
             const Icon = item.icon;

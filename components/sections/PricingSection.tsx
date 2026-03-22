@@ -46,19 +46,19 @@ export function PricingSection() {
   const wa = getWhatsappLink();
 
   return (
-    <section id="pricing" className="scroll-mt-24 border-t border-white/5 px-4 py-16 sm:px-6 sm:py-20">
+    <section id="pricing" className="section-y scroll-mt-24 border-t border-white/5">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">מחירים שקופים</h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-muted">בחרו חבילה — ונתאים את הפרטים בוואטסאפ.</p>
+        <h2 className="section-heading">מחירים שקופים</h2>
+        <p className="section-sub max-w-xl">בחרו חבילה — ונתאים את הפרטים בוואטסאפ.</p>
         <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:items-stretch">
           {plans.map((plan) => (
             <article
               key={plan.name}
               className={cn(
-                "relative flex flex-col rounded-2xl border p-6 shadow-card transition",
+                "relative flex flex-col rounded-2xl border p-6 shadow-card transition duration-200",
                 plan.popular
                   ? "border-accent/50 bg-surface/80 shadow-glow lg:scale-[1.02]"
-                  : "border-white/10 bg-surface/40 hover:border-white/20",
+                  : "border-white/10 bg-surface/40 hover:-translate-y-0.5 hover:border-white/20",
               )}
             >
               {plan.popular && (
