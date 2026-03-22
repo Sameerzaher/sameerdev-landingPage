@@ -36,6 +36,18 @@ body {
   .card-elevated {
     @apply rounded-2xl border border-white/10 bg-surface/50 shadow-card backdrop-blur-sm transition duration-200 hover:border-white/15 hover:shadow-lg hover:shadow-black/25;
   }
+
+  .form-label {
+    @apply mb-2 block text-sm font-medium text-slate-200;
+  }
+
+  .form-input {
+    @apply w-full rounded-xl border border-white/10 bg-background/85 px-4 py-3.5 text-[15px] text-slate-100 shadow-inner placeholder:text-muted/70;
+    @apply outline-none transition duration-200;
+    @apply hover:border-white/20 hover:bg-background/95;
+    @apply focus:border-accent/50 focus:bg-background focus:ring-2 focus:ring-accent/15;
+    @apply disabled:cursor-not-allowed disabled:border-white/10 disabled:opacity-55;
+  }
 }
 
 /* Horizontal scroll for nav without visible scrollbar */

@@ -60,6 +60,9 @@ export function Hero() {
               ממוקד המרות
             </li>
           </ul>
+          <p className="mx-auto mt-4 max-w-xl text-center text-xs text-slate-500 lg:text-start">
+            מותאם לעסקים קטנים בישראל · פיתוח מהיר, תקשורת ישירה, תוצאה ברורה
+          </p>
         </div>
         <div className="flex justify-center lg:justify-end">
           <HeroMockup />

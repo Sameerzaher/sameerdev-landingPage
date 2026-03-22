@@ -1,21 +1,47 @@
-const demos = [
+import { Button } from "@/components/Button";
+import { getWhatsappLink } from "@/lib/whatsapp";
+
+type DemoCard = {
+  title: string;
+  businessType: string;
+  valueProposition: string;
+  tags: readonly string[];
+  waMessage: string;
+  gradient: string;
+  frameRing: string;
+  accentBar: string;
+};
+
+const demos: readonly DemoCard[] = [
   {
-    title: "אתר לספר",
-    description: "עמוד שמביא פניות בוואטסאפ",
+    title: "דף נחיתה למספרה",
+    businessType: "מספרה · שירות מקומי",
+    valueProposition: "שעות, מחירים ופנייה לוואטסאפ בלי בלבול — לקוח יודע מה לבקש.",
+    tags: ["Mobile", "WhatsApp", "Fast"],
+    waMessage:
+      "היי, אני מעוניין בדוגמה דומה לדף נחיתה למספרה (מובייל + וואטסאפ). אפשר לפרט?",
     gradient: "from-amber-500/20 via-orange-600/10 to-background",
     frameRing: "ring-amber-500/20",
     accentBar: "from-amber-400 to-orange-500",
   },
   {
-    title: "אתר למאמן כושר",
-    description: "עמוד שמביא פניות בוואטסאפ",
+    title: "עמוד למאמן כושר",
+    businessType: "מאמן כושר · אימון אישי",
+    valueProposition: "מסר ברור על חבילות וזמינות — בנייד נראה מקצועי ולא עמוס.",
+    tags: ["Mobile", "WhatsApp", "Fast"],
+    waMessage:
+      "היי, רוצה דוגמה דומה לעמוד למאמן כושר — עם דגש על מובייל ופנייה מהירה.",
     gradient: "from-emerald-500/25 via-teal-600/10 to-background",
     frameRing: "ring-emerald-500/25",
     accentBar: "from-emerald-400 to-teal-500",
   },
   {
     title: "אתר למורה נהיגה",
-    description: "עמוד שמביא פניות בוואטסאפ",
+    businessType: "מורה נהיגה · ליווי תלמידים",
+    valueProposition: "מחירים, אזור שירות והסבר קצר — לפני שמתקשרים כבר יודעים מה מציעים.",
+    tags: ["Mobile", "WhatsApp", "Fast"],
+    waMessage:
+      "היי, מחפש דוגמה לאתר למורה נהיגה — עמוד אחד ברור עם וואטסאפ.",
     gradient: "from-sky-500/20 via-blue-600/10 to-background",
     frameRing: "ring-sky-500/25",
     accentBar: "from-sky-400 to-blue-500",
@@ -27,18 +53,18 @@ export function DemoSection() {
     <section id="demo" className="section-y scroll-mt-24">
       <div className="mx-auto max-w-6xl">
         <h2 className="section-heading">איך זה נראה בפועל</h2>
-        <p className="section-sub max-w-xl">תצוגה מקדימה לסוגי עסקים — מוקאפ נקי עם דגש על פנייה בוואטסאפ.</p>
+        <p className="section-sub max-w-xl">
+          דוגמאות ממוקדות — עיצוב נקי, טעינה מהירה ופנייה אחת ברורה ללקוח.
+        </p>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {demos.map((d) => (
             <figure
               key={d.title}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/40 shadow-card transition hover:border-white/15 hover:shadow-xl hover:shadow-black/30"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/40 shadow-card transition hover:border-accent/25 hover:shadow-xl hover:shadow-black/30 focus-within:border-accent/30"
             >
-              <div
-                className={`relative bg-gradient-to-b ${d.gradient} p-4 pt-6 sm:p-5`}
-              >
+              <div className={`relative bg-gradient-to-b ${d.gradient} p-4 pt-6 sm:p-5`}>
                 <div
-                  className={`mx-auto w-full max-w-[260px] rounded-[1.35rem] border border-white/10 bg-[#070b14] p-2 shadow-2xl ring-2 ${d.frameRing} sm:max-w-none`}
+                  className={`mx-auto w-full max-w-[260px] rounded-[1.35rem] border border-white/10 bg-[#070b14] p-2 shadow-2xl ring-2 ${d.frameRing} transition group-hover:ring-accent/30 sm:max-w-none`}
                 >
                   <div className="flex items-center justify-between px-2 pb-1.5 pt-0.5">
                     <span className="h-1 w-10 rounded-full bg-white/15" />
@@ -64,9 +90,32 @@ export function DemoSection() {
                   </div>
                 </div>
               </div>
-              <figcaption className="flex flex-1 flex-col border-t border-white/5 bg-surface/30 px-4 py-5 text-center">
+              <figcaption className="flex flex-1 flex-col border-t border-white/5 bg-surface/30 px-4 py-5 text-start">
                 <span className="text-base font-semibold text-white">{d.title}</span>
-                <span className="mt-2 text-sm leading-snug text-muted">{d.description}</span>
+                <span className="mt-1 text-xs font-medium text-accent/90">{d.businessType}</span>
+                <span className="mt-2 text-sm leading-snug text-muted">{d.valueProposition}</span>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {d.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4">
+                  <Button
+                    href={getWhatsappLink(d.waMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="outline"
+                    size="md"
+                    className="w-full border-white/15 text-sm transition hover:border-accent/40 hover:bg-accent/5 focus-visible:ring-2 focus-visible:ring-accent/50"
+                  >
+                    צפה בדוגמה
+                  </Button>
+                </div>
               </figcaption>
             </figure>
           ))}

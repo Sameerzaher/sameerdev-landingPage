@@ -7,7 +7,7 @@ import { getWhatsappLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 
 const HELPER =
-  "שלחו שם העסק + מה צריך — ואחזור אליכם היום (בדרך כלל תוך שעות ספורות).";
+  "שלחו שם עסק + תחום + מה אתם צריכים, ואחזור אליכם עם כיוון ברור.";
 
 export type SectionWhatsAppCtaProps = {
   headline: string;

@@ -1,47 +1,56 @@
-const STEPS = [
+import type { ComponentType } from "react";
+
+export type HowItWorksStep = {
+  step: number;
+  title: string;
+  description: string;
+  Icon: ComponentType<{ className?: string }>;
+};
+
+const STEPS: HowItWorksStep[] = [
   {
     step: 1,
-    title: "שולחים פרטים בוואטסאפ",
-    body: "שם העסק, מה אתם מציעים ומה חשוב לכם באתר — בלי טפסים ארוכים.",
+    title: "שולחים לי הודעה",
+    description: "שולחים לי בוואטסאפ את שם העסק, התחום ומה אתם צריכים.",
     Icon: IconChat,
   },
   {
     step: 2,
-    title: "אני מתכנן ובונה",
-    body: "מבנה, טקסטים מוצעים ועיצוב נקי — אתם מאשרים ואני מיישם.",
+    title: "אני בונה את האתר",
+    description: "אני מאפיין, מעצב ובונה עבורכם עמוד ברור, מהיר ומותאם לנייד.",
     Icon: IconLayers,
   },
   {
     step: 3,
-    title: "מקבלים אתר חי",
-    body: "עלייה לאוויר, חיבור לוואטסאפ והדרכה קצרה איך לעדכן בעתיד.",
+    title: "עולים לאוויר",
+    description: "אתם מקבלים אתר מוכן לשיתוף, עם אפשרות לחיבור לוואטסאפ וטופס פניות.",
     Icon: IconRocket,
   },
-] as const;
+];
 
 export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="section-y scroll-mt-24 border-y border-white/5 bg-white/[0.02]">
       <div className="mx-auto max-w-6xl">
         <h2 className="section-heading">איך זה עובד</h2>
-        <p className="section-sub max-w-xl">שלושה שלבים פשוטים — בלי בלבול ובלי הפתעות.</p>
+        <p className="section-sub max-w-xl">שלושה שלבים ברורים — מתיאום ועד אתר חי.</p>
         <ol className="mt-12 grid gap-8 md:grid-cols-3">
           {STEPS.map((s) => {
             const Icon = s.Icon;
             return (
-            <li
-              key={s.step}
-              className="card-elevated relative bg-surface/40 p-6 text-start hover:border-accent/35 md:pt-8"
-            >
-              <span className="absolute -top-3 start-6 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#06210f] ring-4 ring-background">
-                {s.step}
-              </span>
-              <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/25">
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-white">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{s.body}</p>
-            </li>
+              <li
+                key={s.step}
+                className="card-elevated relative bg-surface/40 p-6 text-start hover:border-accent/35 md:pt-8"
+              >
+                <span className="absolute -top-3 start-6 flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#06210f] ring-4 ring-background">
+                  {s.step}
+                </span>
+                <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/25">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-white">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{s.description}</p>
+              </li>
             );
           })}
         </ol>

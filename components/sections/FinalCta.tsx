@@ -7,7 +7,7 @@ import { getWhatsappLink } from "@/lib/whatsapp";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 
 const HELPER =
-  "שלחו שם העסק + מה צריך — ואחזור אליכם היום (בדרך כלל תוך שעות ספורות).";
+  "שלחו שם עסק + תחום + מה אתם צריכים, ואחזור אליכם עם כיוון ברור.";
 
 export function FinalCta() {
   const wa = getWhatsappLink(CTA_WHATSAPP_MESSAGES.default);
@@ -37,6 +37,9 @@ export function FinalCta() {
           </Button>
         </div>
         <p className="relative mx-auto mt-4 max-w-md text-xs leading-relaxed text-muted sm:text-sm">{HELPER}</p>
+        <p className="relative mx-auto mt-3 max-w-lg text-xs text-slate-500 sm:text-sm">
+          פיתוח מהיר, תקשורת ישירה, תוצאה ברורה
+        </p>
       </div>
     </section>
   );
