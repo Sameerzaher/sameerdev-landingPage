@@ -3,7 +3,7 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { trackEvent } from "@/lib/analytics";
-import { CTA_HELPER, CTA_PRIMARY_BUTTON, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
+import { CTA_HELPER, CTA_PRIMARY_BUTTON, CTA_REASSURANCE, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
@@ -20,7 +20,7 @@ export function FinalCta() {
           מוכנים לעצור בריחת לקוחות ולהתחיל לקבל פניות?
         </h2>
         <p className="relative mx-auto mt-3 max-w-lg text-muted">
-          שלחו הודעה בוואטסאפ — נבין מה העסק צריך ונחזור עם כיוון ברור עוד היום.
+          שלחו הודעה בוואטסאפ — נבין מה העסק צריך ואחזיר כיוון עוד היום.
         </p>
         <div className="relative mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Button
@@ -28,7 +28,7 @@ export function FinalCta() {
             target="_blank"
             rel="noopener noreferrer"
             size="lg"
-            className="w-full min-h-[3.25rem] shadow-glow ring-2 ring-accent/30 transition hover:scale-[1.02] hover:brightness-110 sm:w-auto sm:min-w-[min(100%,22rem)] sm:px-10"
+            className="w-full min-h-[3.35rem] shadow-glow ring-2 ring-accent/35 transition hover:scale-[1.02] hover:brightness-110 sm:w-auto sm:min-w-[min(100%,22rem)] sm:px-10"
             onClick={() => trackEvent("whatsapp_click", { label: "final_cta" })}
           >
             <WhatsAppIcon className="h-5 w-5" />
@@ -47,6 +47,7 @@ export function FinalCta() {
           </Button>
         </div>
         <p className="relative mx-auto mt-5 max-w-md text-xs leading-relaxed text-muted sm:text-sm">{CTA_HELPER}</p>
+        <p className="relative mx-auto mt-2 max-w-md text-[11px] leading-relaxed text-slate-500 sm:text-xs">{CTA_REASSURANCE}</p>
       </div>
     </section>
   );

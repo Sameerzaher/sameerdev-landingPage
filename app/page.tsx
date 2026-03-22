@@ -17,7 +17,7 @@ import { UrgencySection } from "@/components/sections/UrgencySection";
 import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { CTA_HELPER_SHORT, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
+import { CTA_HELPER, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 
 const secondary = {
@@ -40,10 +40,9 @@ export default function HomePage() {
         <SectionWhatsAppCta
           headline="רוצים להפסיק לראות לקוחות עוברים למתחרה עם אתר?"
           message={CTA_WHATSAPP_MESSAGES.afterPain}
-          helperText={CTA_HELPER_SHORT}
+          helperText={CTA_HELPER}
           analyticsLabel="cta_after_pain"
           secondaryCta={secondary}
-          showTrustStrip={false}
         />
         <AudienceSection />
         <SolutionSection />
@@ -56,7 +55,7 @@ export default function HomePage() {
         <SectionWhatsAppCta
           headline="בואו נדבר על האתר הבא שלכם"
           message={CTA_WHATSAPP_MESSAGES.getSite}
-          helperText={CTA_HELPER_SHORT}
+          helperText={CTA_HELPER}
           analyticsLabel="cta_after_testimonials"
           secondaryCta={secondary}
         />
@@ -65,9 +64,8 @@ export default function HomePage() {
         <SectionWhatsAppCta
           headline="נשארו שאלות? אני כאן בוואטסאפ."
           message={CTA_WHATSAPP_MESSAGES.quote}
-          helperText={CTA_HELPER_SHORT}
+          helperText={CTA_HELPER}
           analyticsLabel="cta_after_faq"
-          showTrustStrip={false}
         />
         <PricingSection />
         <LossWithoutWebsiteSection />

@@ -7,7 +7,7 @@ import { trackEvent } from "@/lib/analytics";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
 const FLOAT_TITLE =
-  "שליחת הודעה פותחת צ׳אט — מענה בדרך כלל תוך שעות ספורות בימים א׳–ה׳. בלי התחייבות בשיחה ראשונה.";
+  "שליחת הודעה פותחת צ׳אט — מענה אנושי (לא בוט), בדרך כלל תוך שעות ספורות א׳–ה׳. בלי התחייבות, בלי רשימת תפוצה.";
 
 export function FloatingWhatsApp() {
   const href = getWhatsappLink(CTA_WHATSAPP_MESSAGES.quickHello);

@@ -1,7 +1,14 @@
 import { Button } from "@/components/Button";
 import { HeroMockup } from "@/components/HeroMockup";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { CTA_HELPER, CTA_PRIMARY_BUTTON, CTA_SECONDARY_BUTTON, TRUST_STRIP } from "@/lib/cta-copy";
+import {
+  CTA_HELPER,
+  CTA_PRIMARY_BUTTON,
+  CTA_REASSURANCE,
+  CTA_SECONDARY_BUTTON,
+  HERO_EMOTIONAL_HOOK,
+  TRUST_STRIP,
+} from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
@@ -23,6 +30,9 @@ export function Hero() {
           <h1 className="text-balance text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl">
             יותר פניות לעסק שלך — אתר מקצועי תוך 3–5 ימים
           </h1>
+          <p className="mx-auto mt-4 max-w-xl rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-4 py-3 text-center text-[15px] font-medium leading-snug text-amber-100/95 sm:text-base lg:mx-0 lg:text-start">
+            {HERO_EMOTIONAL_HOOK}
+          </p>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">
             מעייפים אתר שלא מביא לקוחות ופרסום מסובך? בונים דף נקי, מהיר ומותאם לנייד — עם וואטסאפ בקליק אחד.
           </p>
@@ -43,6 +53,9 @@ export function Hero() {
           </div>
           <p className="mx-auto mt-3 max-w-xl text-center text-xs leading-relaxed text-muted sm:text-sm lg:text-start">
             {CTA_HELPER}
+          </p>
+          <p className="mx-auto mt-2 max-w-xl text-center text-[11px] leading-relaxed text-slate-500 sm:text-xs lg:text-start">
+            {CTA_REASSURANCE}
           </p>
           <p className="mx-auto mt-2 max-w-xl text-center text-[11px] leading-relaxed text-slate-500 sm:text-xs lg:text-start">
             טווח מחירים שקוף ב

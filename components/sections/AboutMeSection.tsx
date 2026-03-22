@@ -18,8 +18,14 @@ export function AboutMeSection() {
           </div>
           <div className="text-start">
             <p className="text-pretty text-base leading-relaxed text-slate-200 sm:text-lg">
-              אני Sameer, מפתח Full Stack שעובד עם עסקים קטנים ובינוניים. המטרה שלי היא לבנות לך אתר ברור,
-              מהיר וממוקד שמביא פניות — בלי סיבוכים ובלי תהליכים ארוכים.
+              אני Sameer, מפתח Full Stack שעובד עם עסקים קטנים ובינוניים. אני מתמקד בבניית אתרים פשוטים,
+              מהירים וברורים שמביאים פניות — בלי סיבוכים ובלי תהליכים ארוכים.
+            </p>
+            <p className="mt-4 text-pretty text-sm leading-relaxed text-muted sm:text-base">
+              עבדתי עם עסקים בתחומים שונים והתמקדתי במה שבאמת מביא תוצאה — פניות מלקוחות.
+            </p>
+            <p className="mt-3 text-pretty text-sm font-medium leading-relaxed text-slate-300 sm:text-base">
+              מדברים איתי ישירות — לא עם מוקד, לא מערכת אוטומטית ולא ״מנהלת לקוחות״ של צד שלישי.
             </p>
             <ul className="mt-6 space-y-2.5 text-sm text-muted sm:text-base">
               {POINTS.map((line) => (

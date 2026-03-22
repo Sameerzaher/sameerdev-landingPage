@@ -3,7 +3,7 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { trackEvent } from "@/lib/analytics";
-import { CTA_HELPER, CTA_PRIMARY_BUTTON, TRUST_STRIP } from "@/lib/cta-copy";
+import { CTA_HELPER, CTA_PRIMARY_BUTTON, CTA_REASSURANCE, TRUST_STRIP } from "@/lib/cta-copy";
 import { getWhatsappLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 
@@ -20,6 +20,8 @@ export type SectionWhatsAppCtaProps = {
   showTrustStrip?: boolean;
   /** Optional second action (outline) — e.g. “is this for me?” */
   secondaryCta?: { label: string; message: string };
+  /** Show reassurance line (human, no spam). Default true. */
+  showReassurance?: boolean;
 };
 
 export function SectionWhatsAppCta({
@@ -30,6 +32,7 @@ export function SectionWhatsAppCta({
   analyticsLabel = "section_whatsapp",
   className,
   showTrustStrip = true,
+  showReassurance = true,
   secondaryCta,
 }: SectionWhatsAppCtaProps) {
   const href = getWhatsappLink(message);
@@ -53,13 +56,16 @@ export function SectionWhatsAppCta({
             target="_blank"
             rel="noopener noreferrer"
             size="lg"
-            className="w-full min-h-[3.25rem] shadow-glow ring-2 ring-accent/25 transition hover:scale-[1.02] hover:brightness-110 hover:ring-accent/40 active:scale-[0.99] sm:w-auto sm:min-w-[min(100%,20rem)] sm:px-10"
+            className="w-full min-h-[3.35rem] shadow-glow ring-2 ring-accent/30 transition hover:scale-[1.02] hover:brightness-110 hover:ring-accent/45 active:scale-[0.99] sm:w-auto sm:min-w-[min(100%,20rem)] sm:px-10"
             onClick={() => trackEvent("whatsapp_click", { label: analyticsLabel })}
           >
             <WhatsAppIcon className="h-5 w-5" />
             {buttonText}
           </Button>
           <p className="max-w-md text-xs leading-relaxed text-muted sm:text-sm">{helperText}</p>
+          {showReassurance ? (
+            <p className="max-w-md text-[11px] leading-relaxed text-slate-500 sm:text-xs">{CTA_REASSURANCE}</p>
+          ) : null}
           {showTrustStrip ? (
             <ul className="flex max-w-lg flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[11px] text-slate-500 sm:text-xs">
               {TRUST_STRIP.map((line) => (
