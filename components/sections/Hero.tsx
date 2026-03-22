@@ -1,11 +1,13 @@
 import { Button } from "@/components/Button";
 import { HeroMockup } from "@/components/HeroMockup";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import { getWhatsappLink } from "@/lib/whatsapp";
+import { CTA_HELPER, CTA_PRIMARY_BUTTON, CTA_SECONDARY_BUTTON, TRUST_STRIP } from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
+import { getWhatsappLink } from "@/lib/whatsapp";
 
 export function Hero() {
-  const wa = getWhatsappLink(CTA_WHATSAPP_MESSAGES.getSite);
+  const waPrimary = getWhatsappLink(CTA_WHATSAPP_MESSAGES.getSite);
+  const waSecondary = getWhatsappLink(CTA_WHATSAPP_MESSAGES.softFit);
 
   return (
     <section
@@ -24,45 +26,57 @@ export function Hero() {
           <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">
             מעייפים אתר שלא מביא לקוחות ופרסום מסובך? בונים דף נקי, מהיר ומותאם לנייד — עם וואטסאפ בקליק אחד.
           </p>
-          <p className="mx-auto mt-3 max-w-xl text-sm font-medium text-slate-300 lg:mx-0">
-            נבנה לעסקים קטנים ובינוניים בישראל
-            <span className="mt-1 block text-xs font-normal text-slate-500" lang="en" dir="ltr">
-              Built for small businesses in Israel
-            </span>
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
             <Button
-              href={wa}
+              href={waPrimary}
               target="_blank"
               rel="noopener noreferrer"
               size="lg"
-              className="w-full transition hover:scale-[1.02] active:scale-[0.99] sm:w-auto"
+              className="w-full min-h-[3.25rem] shadow-glow ring-2 ring-accent/25 transition hover:scale-[1.02] hover:brightness-110 hover:ring-accent/40 active:scale-[0.99] sm:w-auto sm:px-8"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              קבלו אתר תוך 3–5 ימים
+              {CTA_PRIMARY_BUTTON}
             </Button>
             <Button href="#pricing" variant="outline" size="lg" className="w-full sm:w-auto">
               עבור למחירים
             </Button>
           </div>
-          <p className="mt-3 text-center text-xs text-slate-500 lg:text-start">נשארו 5 מקומות השבוע</p>
-          <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted lg:justify-start">
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              מסירה מהירה
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              ללא מורכבות
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              ממוקד המרות
-            </li>
-          </ul>
-          <p className="mx-auto mt-4 max-w-xl text-center text-xs text-slate-500 lg:text-start">
-            מותאם לעסקים קטנים בישראל · פיתוח מהיר, תקשורת ישירה, תוצאה ברורה
+          <p className="mx-auto mt-3 max-w-xl text-center text-xs leading-relaxed text-muted sm:text-sm lg:text-start">
+            {CTA_HELPER}
           </p>
+          <p className="mx-auto mt-2 max-w-xl text-center text-[11px] leading-relaxed text-slate-500 sm:text-xs lg:text-start">
+            טווח מחירים שקוף ב
+            <a href="#pricing" className="mx-1 font-medium text-accent/90 underline-offset-2 hover:text-accent hover:underline">
+              חלק המחירים
+            </a>
+            — בלי הפתעות. מעדיף טופס?
+            <a
+              href="#lead-form"
+              className="mx-1 font-medium text-accent/90 underline-offset-2 hover:text-accent hover:underline"
+            >
+              השאר פרטים כאן
+            </a>
+          </p>
+          <div className="mt-3">
+            <Button
+              href={waSecondary}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="ghost"
+              size="md"
+              className="w-full text-sm text-slate-300 underline-offset-4 hover:bg-white/5 hover:text-white hover:underline sm:w-auto"
+            >
+              {CTA_SECONDARY_BUTTON}
+            </Button>
+          </div>
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-muted sm:text-sm lg:justify-start">
+            {TRUST_STRIP.map((line) => (
+              <li key={line} className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
+                {line}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="flex justify-center lg:justify-end">
           <HeroMockup />

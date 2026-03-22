@@ -1,6 +1,6 @@
-const DEFAULT_PHONE = "972XXXXXXXXX";
+import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 
-const DEFAULT_MESSAGE = "היי, ראיתי את האתר שלך ואני רוצה לשמוע עוד";
+const DEFAULT_PHONE = "972XXXXXXXXX";
 
 function resolvePhone(): string {
   const fromEnv = process.env.NEXT_PUBLIC_WHATSAPP_PHONE?.replace(/\D/g, "");
@@ -23,6 +23,6 @@ function resolvePhone(): string {
  * Builds a WhatsApp click-to-chat URL with an optional pre-filled message (UTF-8 encoded).
  */
 export function getWhatsappLink(message?: string): string {
-  const text = encodeURIComponent(message ?? DEFAULT_MESSAGE);
+  const text = encodeURIComponent(message ?? CTA_WHATSAPP_MESSAGES.default);
   return `https://wa.me/${resolvePhone()}?text=${text}`;
 }

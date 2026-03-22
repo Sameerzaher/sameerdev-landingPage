@@ -2,10 +2,11 @@ import { Button } from "@/components/Button";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
 type DemoCard = {
+  id: string;
   title: string;
   businessType: string;
-  valueProposition: string;
-  tags: readonly string[];
+  bulletPoints: readonly string[];
+  resultLine: string;
   waMessage: string;
   gradient: string;
   frameRing: string;
@@ -14,34 +15,35 @@ type DemoCard = {
 
 const demos: readonly DemoCard[] = [
   {
-    title: "דף נחיתה למספרה",
-    businessType: "מספרה · שירות מקומי",
-    valueProposition: "שעות, מחירים ופנייה לוואטסאפ בלי בלבול — לקוח יודע מה לבקש.",
-    tags: ["Mobile", "WhatsApp", "Fast"],
+    id: "fitwithnoa",
+    title: "FitWithNoa – אתר למאמנת כושר",
+    businessType: "מותג אישי · אימון אישי",
+    bulletPoints: ["עמוד מותאם לנייד", "חיבור לוואטסאפ", "עלייה לאוויר תוך 4 ימים"],
+    resultLine: "פניות מסודרות מהעמוד — בלי הסברים ארוכים בטלפון",
     waMessage:
-      "היי, אני מעוניין בדוגמה דומה לדף נחיתה למספרה (מובייל + וואטסאפ). אפשר לפרט?",
-    gradient: "from-amber-500/20 via-orange-600/10 to-background",
-    frameRing: "ring-amber-500/20",
-    accentBar: "from-amber-400 to-orange-500",
-  },
-  {
-    title: "עמוד למאמן כושר",
-    businessType: "מאמן כושר · אימון אישי",
-    valueProposition: "מסר ברור על חבילות וזמינות — בנייד נראה מקצועי ולא עמוס.",
-    tags: ["Mobile", "WhatsApp", "Fast"],
-    waMessage:
-      "היי, רוצה דוגמה דומה לעמוד למאמן כושר — עם דגש על מובייל ופנייה מהירה.",
+      "היי, רוצה משהו דומה לדוגמה FitWithNoa (מאמנת כושר) — מובייל + וואטסאפ.",
     gradient: "from-emerald-500/25 via-teal-600/10 to-background",
     frameRing: "ring-emerald-500/25",
     accentBar: "from-emerald-400 to-teal-500",
   },
   {
-    title: "אתר למורה נהיגה",
-    businessType: "מורה נהיגה · ליווי תלמידים",
-    valueProposition: "מחירים, אזור שירות והסבר קצר — לפני שמתקשרים כבר יודעים מה מציעים.",
-    tags: ["Mobile", "WhatsApp", "Fast"],
-    waMessage:
-      "היי, מחפש דוגמה לאתר למורה נהיגה — עמוד אחד ברור עם וואטסאפ.",
+    id: "kingfade",
+    title: "King Fade – אתר לספר",
+    businessType: "מספרה · שירות מקומי",
+    bulletPoints: ["גלריית עבודות", "פירוט שירותים", "פניות ישירות מלקוחות"],
+    resultLine: "לקוחות מבינים מה מקבלים לפני שמגיעים",
+    waMessage: "היי, מעוניין בדוגמה בסגנון King Fade — ספר עם גלריה ווואטסאפ.",
+    gradient: "from-amber-500/20 via-orange-600/10 to-background",
+    frameRing: "ring-amber-500/20",
+    accentBar: "from-amber-400 to-orange-500",
+  },
+  {
+    id: "driveright",
+    title: "DriveRight – אתר למורה נהיגה",
+    businessType: "לימוד נהיגה · אזורי שירות",
+    bulletPoints: ["מחירים וחבילות ברורים", "אזור שירות ושעות קבלה", "וואטסאפ לתלמיד חדש"],
+    resultLine: "פחות שאלות חוזרות — יותר פניות רלוונטיות",
+    waMessage: "היי, רוצה דוגמה כמו DriveRight — מורה נהיגה עם מחירים ווואטסאפ.",
     gradient: "from-sky-500/20 via-blue-600/10 to-background",
     frameRing: "ring-sky-500/25",
     accentBar: "from-sky-400 to-blue-500",
@@ -54,12 +56,12 @@ export function DemoSection() {
       <div className="mx-auto max-w-6xl">
         <h2 className="section-heading">איך זה נראה בפועל</h2>
         <p className="section-sub max-w-xl">
-          דוגמאות ממוקדות — עיצוב נקי, טעינה מהירה ופנייה אחת ברורה ללקוח.
+          דוגמאות עם שמות ותוצאות — לא רק &quot;אתר גנרי&quot;, אלא תרחישים אמיתיים לעסקים כמוך.
         </p>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {demos.map((d) => (
             <figure
-              key={d.title}
+              key={d.id}
               className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/40 shadow-card transition hover:border-accent/25 hover:shadow-xl hover:shadow-black/30 focus-within:border-accent/30"
             >
               <div className={`relative bg-gradient-to-b ${d.gradient} p-4 pt-6 sm:p-5`}>
@@ -91,19 +93,22 @@ export function DemoSection() {
                 </div>
               </div>
               <figcaption className="flex flex-1 flex-col border-t border-white/5 bg-surface/30 px-4 py-5 text-start">
-                <span className="text-base font-semibold text-white">{d.title}</span>
+                <span className="text-base font-semibold leading-snug text-white">{d.title}</span>
                 <span className="mt-1 text-xs font-medium text-accent/90">{d.businessType}</span>
-                <span className="mt-2 text-sm leading-snug text-muted">{d.valueProposition}</span>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {d.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400"
-                    >
-                      {tag}
-                    </span>
+                <ul className="mt-3 space-y-1.5 text-sm text-slate-200">
+                  {d.bulletPoints.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="text-accent" aria-hidden>
+                        ✔
+                      </span>
+                      <span>{b}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
+                <p className="mt-3 rounded-lg border border-white/8 bg-white/[0.03] px-2.5 py-2 text-xs leading-relaxed text-muted">
+                  <span className="font-medium text-slate-400">תוצאה: </span>
+                  {d.resultLine}
+                </p>
                 <div className="mt-4">
                   <Button
                     href={getWhatsappLink(d.waMessage)}

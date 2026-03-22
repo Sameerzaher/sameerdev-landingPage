@@ -1,4 +1,5 @@
 import { SectionWhatsAppCta } from "@/components/SectionWhatsAppCta";
+import { AboutMeSection } from "@/components/sections/AboutMeSection";
 import { AudienceSection } from "@/components/sections/AudienceSection";
 import { DemoSection } from "@/components/sections/DemoSection";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -6,15 +7,23 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { LeadFormSection } from "@/components/sections/LeadFormSection";
+import { LossWithoutWebsiteSection } from "@/components/sections/LossWithoutWebsiteSection";
 import { PainSection } from "@/components/sections/PainSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { SolutionSection } from "@/components/sections/SolutionSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { UrgencySection } from "@/components/sections/UrgencySection";
 import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { CTA_HELPER_SHORT, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
+
+const secondary = {
+  label: CTA_SECONDARY_BUTTON,
+  message: CTA_WHATSAPP_MESSAGES.softFit,
+} as const;
 
 export default function HomePage() {
   return (
@@ -26,53 +35,42 @@ export default function HomePage() {
           aria-hidden
         />
         <Hero />
+        <UrgencySection />
         <PainSection />
         <SectionWhatsAppCta
-          headline="מוכנים להפסיק לאבד לקוחות לטובת המתחרים?"
-          buttonText="שלחו לי פרטים על העסק"
+          headline="רוצים להפסיק לראות לקוחות עוברים למתחרה עם אתר?"
           message={CTA_WHATSAPP_MESSAGES.afterPain}
+          helperText={CTA_HELPER_SHORT}
           analyticsLabel="cta_after_pain"
+          secondaryCta={secondary}
+          showTrustStrip={false}
         />
         <AudienceSection />
-        <SectionWhatsAppCta
-          headline="רוצים אתר שמביא פניות — בלי להסתבך?"
-          buttonText="קבלו אתר תוך 3–5 ימים"
-          message={CTA_WHATSAPP_MESSAGES.getSite}
-          analyticsLabel="cta_after_audience"
-        />
         <SolutionSection />
+        <AboutMeSection />
         <HowItWorksSection />
-        <SectionWhatsAppCta
-          headline="נשמע פשוט? ככה זה באמת עובד."
-          buttonText="קבלו הצעת מחיר היום"
-          message={CTA_WHATSAPP_MESSAGES.quote}
-          analyticsLabel="cta_after_how_it_works"
-        />
         <PortfolioSection />
         <WhyChooseSection />
-        <SectionWhatsAppCta
-          headline="רוצים דוגמה דומה לעסק שלכם?"
-          buttonText="שלחו לי פרטים על העסק"
-          message={CTA_WHATSAPP_MESSAGES.sendDetails}
-          analyticsLabel="cta_after_why_choose"
-        />
         <DemoSection />
         <TestimonialsSection />
         <SectionWhatsAppCta
           headline="בואו נדבר על האתר הבא שלכם"
-          buttonText="קבלו אתר תוך 3–5 ימים"
           message={CTA_WHATSAPP_MESSAGES.getSite}
+          helperText={CTA_HELPER_SHORT}
           analyticsLabel="cta_after_testimonials"
+          secondaryCta={secondary}
         />
         <LeadFormSection />
         <FaqSection />
         <SectionWhatsAppCta
           headline="נשארו שאלות? אני כאן בוואטסאפ."
-          buttonText="קבלו הצעת מחיר היום"
           message={CTA_WHATSAPP_MESSAGES.quote}
+          helperText={CTA_HELPER_SHORT}
           analyticsLabel="cta_after_faq"
+          showTrustStrip={false}
         />
         <PricingSection />
+        <LossWithoutWebsiteSection />
         <FinalCta />
       </main>
       <Footer />

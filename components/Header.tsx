@@ -1,10 +1,13 @@
 import { Button } from "@/components/Button";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { CTA_SHORT_BUTTON } from "@/lib/cta-copy";
+import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
 const LINKS = [
   { href: "#pain", label: "הבעיה" },
   { href: "#audience", label: "למי מתאים" },
+  { href: "#about", label: "מי אני" },
   { href: "#solution", label: "הפתרון" },
   { href: "#how-it-works", label: "איך זה עובד" },
   { href: "#portfolio", label: "פרויקטים" },
@@ -14,7 +17,7 @@ const LINKS = [
 ] as const;
 
 export function Header() {
-  const wa = getWhatsappLink();
+  const wa = getWhatsappLink(CTA_WHATSAPP_MESSAGES.quickHello);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-background/85 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
@@ -53,7 +56,7 @@ export function Header() {
           className="shrink-0 gap-1.5 px-3 shadow-glow transition hover:brightness-110 sm:gap-2 sm:px-6"
         >
           <WhatsAppIcon className="h-[1.1rem] w-[1.1rem] sm:h-5 sm:w-5" />
-          <span className="hidden sm:inline">דבר איתי</span>
+          <span className="hidden sm:inline">{CTA_SHORT_BUTTON}</span>
           <span className="sm:hidden">וואטסאפ</span>
         </Button>
       </div>
