@@ -25,8 +25,10 @@ export function Hero() {
           <h1 className="text-balance text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl">
             {HERO_HEADLINE}
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">{HERO_SUBTEXT}</p>
-          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+          <p className="mx-auto mt-5 max-w-xl text-pretty text-[15px] leading-[1.65] text-slate-300/95 sm:text-lg sm:leading-normal sm:text-muted lg:mx-0">
+            {HERO_SUBTEXT}
+          </p>
+          <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-3 sm:justify-center lg:justify-start">
             <Button
               href={waPrimary}
               target="_blank"
@@ -37,7 +39,12 @@ export function Hero() {
               <WhatsAppIcon className="h-5 w-5" />
               אני רוצה אתר לעסק שלי
             </Button>
-            <Button href="#demo" variant="outline" size="lg" className="w-full sm:w-auto">
+            <Button
+              href="#demo"
+              variant="outline"
+              size="lg"
+              className="w-full min-h-[3rem] text-[15px] font-medium text-slate-200/95 sm:min-h-auto sm:w-auto sm:text-base"
+            >
               צפה בדוגמאות
             </Button>
           </div>

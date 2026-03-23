@@ -40,12 +40,16 @@ export function SectionWhatsAppCta({
 
   return (
     <section
-      className={cn("px-4 py-6 sm:px-6 sm:py-8", "motion-reduce:animate-none", className)}
+      className={cn(
+        "px-4 py-10 sm:px-6 sm:py-12",
+        "motion-reduce:animate-none",
+        className,
+      )}
       aria-label="קריאה לפעולה"
     >
       <div
         className={cn(
-          "relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated/90 px-5 py-7 shadow-card backdrop-blur-md sm:px-8 sm:py-9",
+          "relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated/90 px-5 py-8 shadow-card backdrop-blur-md sm:px-8 sm:py-9",
           "ring-1 ring-white/[0.06] transition hover:border-accent/25 hover:shadow-lg hover:shadow-black/35 hover:ring-accent/20",
         )}
       >
@@ -53,7 +57,7 @@ export function SectionWhatsAppCta({
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent"
           aria-hidden
         />
-        <div className="flex flex-col items-center gap-4 text-center">
+        <div className="flex flex-col items-center gap-5 text-center sm:gap-6">
           <p className="text-base font-semibold leading-snug text-white sm:text-lg">{headline}</p>
           <Button
             href={href}
@@ -66,7 +70,22 @@ export function SectionWhatsAppCta({
             <WhatsAppIcon className="h-5 w-5" />
             {buttonText}
           </Button>
-          <p className="max-w-md text-xs leading-relaxed text-muted sm:text-sm">{helperText}</p>
+          {secondaryCta && secondaryHref ? (
+            <Button
+              href={secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="md"
+              className="w-full min-h-[2.875rem] border-white/20 text-sm text-slate-200/95 sm:w-auto sm:min-h-0 sm:px-6 sm:text-base"
+              onClick={() => trackEvent("whatsapp_click", { label: `${analyticsLabel}_secondary` })}
+            >
+              {secondaryCta.label}
+            </Button>
+          ) : null}
+          <p className="max-w-md text-[13px] leading-[1.65] text-slate-400 sm:text-sm sm:leading-relaxed sm:text-muted">
+            {helperText}
+          </p>
           {showReassurance ? (
             <p className="max-w-md text-[11px] leading-relaxed text-slate-500 sm:text-xs">{CTA_REASSURANCE}</p>
           ) : null}
@@ -79,19 +98,6 @@ export function SectionWhatsAppCta({
                 </li>
               ))}
             </ul>
-          ) : null}
-          {secondaryCta && secondaryHref ? (
-            <Button
-              href={secondaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              size="md"
-              className="w-full border-white/20 sm:w-auto"
-              onClick={() => trackEvent("whatsapp_click", { label: `${analyticsLabel}_secondary` })}
-            >
-              {secondaryCta.label}
-            </Button>
           ) : null}
         </div>
       </div>

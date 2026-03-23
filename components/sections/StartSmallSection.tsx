@@ -12,8 +12,10 @@ export function StartSmallSection() {
           <h2 id="start-small-heading" className="text-lg font-bold tracking-tight text-white sm:text-xl">
             {startSmallContent.title}
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-200/95 sm:text-base">{startSmallContent.body}</p>
-          <p className="mt-3 border-t border-white/10 pt-3 text-sm text-muted sm:text-[15px]">
+          <p className="mt-3 text-[15px] leading-[1.65] text-slate-300/95 sm:text-base sm:leading-relaxed sm:text-slate-200/95">
+            {startSmallContent.body}
+          </p>
+          <p className="mt-4 border-t border-white/10 pt-3 text-sm leading-relaxed text-slate-400 sm:text-[15px] sm:text-muted">
             {startSmallContent.supporting}
           </p>
         </div>

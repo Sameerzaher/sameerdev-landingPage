@@ -18,7 +18,7 @@ export function DemoCtaGroup({ demoUrl, whatsappHref, className }: DemoCtaGroupP
   return (
     <div
       className={cn(
-        "flex w-full flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3",
+        "flex w-full flex-col gap-3.5 sm:flex-row sm:flex-wrap sm:gap-3",
         className,
       )}
     >
@@ -29,7 +29,7 @@ export function DemoCtaGroup({ demoUrl, whatsappHref, className }: DemoCtaGroupP
           rel="noopener noreferrer"
           variant="outline"
           size="md"
-          className="w-full border-2 border-white/18 font-semibold text-slate-100 transition hover:border-accent/45 hover:bg-white/[0.07] sm:min-w-0 sm:flex-1"
+          className="w-full min-h-[3rem] text-sm font-semibold text-slate-100 transition hover:border-accent/45 hover:bg-white/[0.07] sm:min-h-0 sm:min-w-0 sm:flex-1 sm:text-base"
           aria-label="צפה בדוגמה חיה — נפתח בלשונית חדשה"
         >
           צפה בדוגמה
@@ -40,10 +40,10 @@ export function DemoCtaGroup({ demoUrl, whatsappHref, className }: DemoCtaGroupP
         target="_blank"
         rel="noopener noreferrer"
         variant="primary"
-        size="md"
+        size="lg"
         className={cn(
-          "w-full font-semibold shadow-glow ring-2 ring-accent/35 transition hover:brightness-110 hover:ring-accent/50",
-          hasLiveDemo && "sm:min-w-0 sm:flex-1",
+          "w-full min-h-[3.35rem] font-semibold shadow-glow ring-2 ring-accent/40 transition hover:brightness-110 hover:ring-accent/55",
+          hasLiveDemo && "sm:min-h-0 sm:min-w-0 sm:flex-1",
         )}
       >
         אני רוצה כזה

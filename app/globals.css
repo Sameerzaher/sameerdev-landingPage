@@ -35,7 +35,7 @@ body {
     @apply mx-auto mt-4 block h-[3px] w-14 rounded-full bg-gradient-to-r from-transparent via-accent/45 to-transparent;
   }
   .section-sub {
-    @apply mx-auto mt-4 max-w-2xl text-pretty text-center text-sm leading-relaxed text-muted sm:text-base;
+    @apply mx-auto mt-4 max-w-2xl text-pretty px-1 text-center text-[15px] font-normal leading-[1.7] text-slate-300/95 sm:px-0 sm:text-base sm:font-normal sm:leading-relaxed sm:text-muted;
   }
   .card-elevated {
     @apply rounded-2xl border border-white/10 bg-surface/50 shadow-card backdrop-blur-sm transition duration-200 hover:border-white/15 hover:shadow-lg hover:shadow-black/25;

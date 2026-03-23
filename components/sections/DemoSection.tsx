@@ -198,7 +198,9 @@ export function DemoSection() {
                     <span className="font-semibold text-accent">תוצאה: </span>
                     {d.resultLine}
                   </p>
-                  <DemoCtaGroup demoUrl={demoUrl} whatsappHref={waHref} className="mt-5" />
+                  <div className="mt-6 border-t border-white/10 pt-5">
+                    <DemoCtaGroup demoUrl={demoUrl} whatsappHref={waHref} />
+                  </div>
                 </figcaption>
               </figure>
             );
