@@ -1,36 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { faqContent } from "@/lib/landing-content";
 import { cn } from "@/lib/cn";
 
 export type FaqItem = { q: string; a: string };
-
-const FAQ: FaqItem[] = [
-  {
-    q: "תוך כמה זמן האתר מוכן?",
-    a: "בדרך כלל תוך 3–5 ימי עבודה, תלוי בהיקף ובחומרים שצריך להכין.",
-  },
-  {
-    q: "מה צריך לשלוח כדי להתחיל?",
-    a: "שם העסק, תחום הפעילות, טקסט בסיסי, לוגו אם יש, וקישורים רלוונטיים.",
-  },
-  {
-    q: "המחיר כולל דומיין ואחסון?",
-    a: "המחיר כולל הקמה של האתר. דומיין ואחסון תלויים בצורך ויכולים להיות מתומחרים בנפרד.",
-  },
-  {
-    q: "אפשר לבקש שינויים?",
-    a: "כן. בכל חבילה יש סבב תיקונים בסיסי כדי לוודא שהתוצאה מתאימה לעסק שלכם.",
-  },
-  {
-    q: "האתר מתאים למובייל?",
-    a: "כן. כל האתרים נבנים בגישה mobile-first ומתאימים לטלפון, טאבלט ומחשב.",
-  },
-  {
-    q: "אפשר לבנות בכמה שפות?",
-    a: "כן. אפשר לבנות את האתר בעברית, ערבית או אנגלית, ובחלק מהמקרים גם לשלב כמה שפות.",
-  },
-];
 
 function ChevronIcon({ className }: { className?: string }) {
   return (
@@ -47,9 +21,9 @@ export function FaqSection() {
     <section id="faq" className="section-y scroll-mt-24 border-t border-white/5">
       <div className="mx-auto max-w-3xl">
         <h2 className="section-heading">שאלות נפוצות</h2>
-        <p className="section-sub">תשובות ישירות — נשמח לפרט יותר בוואטסאפ.</p>
+        <p className="section-sub">תשובות ישירות — בלי שפה שיווקית מסובכת.</p>
         <div className="mt-10 space-y-3">
-          {FAQ.map((item, i) => {
+          {faqContent.map((item, i) => {
             const open = openIndex === i;
             return (
               <div

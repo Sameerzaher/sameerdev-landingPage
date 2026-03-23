@@ -1,41 +1,44 @@
+import { whatYouGetContent } from "@/lib/landing-content";
 import { cn } from "@/lib/cn";
 
-const ITEMS = [
-  { text: "עיצוב מותאם לעסק שלך", Icon: IconPalette },
-  { text: "אתר מותאם למובייל", Icon: IconMobile },
-  { text: "כפתור וואטסאפ לפניות", Icon: IconWhatsApp },
-  { text: "טופס יצירת קשר", Icon: IconForm },
-  { text: "חיבור לדומיין", Icon: IconDomain },
-  { text: "עלייה לאוויר במהירות", Icon: IconRocket },
-] as const;
+const ICONS = {
+  design: IconPalette,
+  mobile: IconMobile,
+  wa: IconWhatsApp,
+  form: IconForm,
+  domain: IconDomain,
+  launch: IconRocket,
+  revisions: IconSparkles,
+  direct: IconChat,
+} as const;
 
 export function WhatYouGetSection() {
   return (
     <section id="what-you-get" className="section-y scroll-mt-24 border-t border-white/5">
       <div className="mx-auto max-w-4xl">
-        <h2 className="section-heading">מה מקבלים?</h2>
-        <p className="section-sub max-w-xl">
-          יש גם פתרונות התחלתיים לעסקים קטנים —{" "}
-          <span className="font-medium text-slate-300">אתרים החל מ־₪1,500</span> (חבילת Basic).
-        </p>
+        <h2 className="section-heading">{whatYouGetContent.title}</h2>
+        <p className="section-sub max-w-xl">{whatYouGetContent.subtitle}</p>
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {ITEMS.map(({ text, Icon }) => (
-            <li
-              key={text}
-              className={cn(
-                "flex items-start gap-3 rounded-xl border border-white/10 bg-surface/40 p-4 text-start shadow-card",
-                "transition hover:border-accent/25",
-              )}
-            >
-              <span
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent ring-1 ring-accent/20"
-                aria-hidden
+          {whatYouGetContent.items.map(({ key, text }) => {
+            const Icon = ICONS[key];
+            return (
+              <li
+                key={key}
+                className={cn(
+                  "flex items-start gap-3 rounded-xl border border-white/10 bg-surface/40 p-4 text-start shadow-card",
+                  "transition hover:border-accent/25",
+                )}
               >
-                <Icon className="h-5 w-5" />
-              </span>
-              <span className="pt-1.5 text-sm font-medium leading-snug text-slate-100 sm:text-base">{text}</span>
-            </li>
-          ))}
+                <span
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent ring-1 ring-accent/20"
+                  aria-hidden
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="pt-1.5 text-sm font-medium leading-snug text-slate-100 sm:text-base">{text}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
@@ -91,6 +94,26 @@ function IconRocket({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
       <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" strokeLinejoin="round" />
       <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconSparkles({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+      <path d="M12 20h9" strokeLinecap="round" />
+      <path
+        d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function IconChat({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" strokeLinejoin="round" />
     </svg>
   );
 }

@@ -1,6 +1,5 @@
 import { SectionWhatsAppCta } from "@/components/SectionWhatsAppCta";
 import { AboutMeSection } from "@/components/sections/AboutMeSection";
-import { AudienceSection } from "@/components/sections/AudienceSection";
 import { DemoSection } from "@/components/sections/DemoSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -16,6 +15,8 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { UrgencySection } from "@/components/sections/UrgencySection";
 import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
 import { WhatYouGetSection } from "@/components/sections/WhatYouGetSection";
+import { AudienceSection } from "@/components/sections/AudienceSection";
+import { StartSmallSection } from "@/components/sections/StartSmallSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CTA_HELPER, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
@@ -45,13 +46,13 @@ export default function HomePage() {
           analyticsLabel="cta_after_pain"
           secondaryCta={secondary}
         />
-        <AudienceSection />
         <SolutionSection />
         <AboutMeSection />
         <HowItWorksSection />
         <PortfolioSection />
         <WhyChooseSection />
         <DemoSection />
+        <AudienceSection />
         <TestimonialsSection />
         <SectionWhatsAppCta
           headline="בואו נדבר על האתר הבא שלכם"
@@ -71,6 +72,7 @@ export default function HomePage() {
         <PricingSection />
         <LossWithoutWebsiteSection />
         <WhatYouGetSection />
+        <StartSmallSection />
         <FinalCta />
       </main>
       <Footer />

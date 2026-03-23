@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "@/components/Button";
+import { DemoCtaGroup } from "@/components/DemoCtaGroup";
 import { DEMO_URLS, type DemoCaseId } from "@/lib/demo-links";
 import { DEMO_PREVIEW_IMAGES } from "@/lib/demo-preview-images";
 import { getWhatsappLink } from "@/lib/whatsapp";
@@ -198,32 +198,7 @@ export function DemoSection() {
                     <span className="font-semibold text-accent">תוצאה: </span>
                     {d.resultLine}
                   </p>
-                  <div className="mt-5 flex flex-col gap-2.5">
-                    <Button
-                      href={demoUrl}
-                      target={isPlaceholder ? undefined : "_blank"}
-                      rel={isPlaceholder ? undefined : "noopener noreferrer"}
-                      variant="outline"
-                      size="md"
-                      className="w-full border-2 border-white/18 font-semibold text-slate-100 transition hover:border-accent/45 hover:bg-white/[0.07]"
-                      aria-label={isPlaceholder ? "דוגמה חיה — בקרוב" : "צפה בדוגמה באתר חיצוני"}
-                    >
-                      צפה בדוגמה
-                      {isPlaceholder ? (
-                        <span className="ms-1 text-[10px] font-normal text-muted">(בקרוב)</span>
-                      ) : null}
-                    </Button>
-                    <Button
-                      href={waHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="primary"
-                      size="md"
-                      className="w-full font-semibold shadow-glow ring-2 ring-accent/35 transition hover:brightness-110 hover:ring-accent/50"
-                    >
-                      אני רוצה כזה
-                    </Button>
-                  </div>
+                  <DemoCtaGroup demoUrl={demoUrl} whatsappHref={waHref} className="mt-5" />
                 </figcaption>
               </figure>
             );
