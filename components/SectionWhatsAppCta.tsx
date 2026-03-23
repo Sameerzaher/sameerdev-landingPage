@@ -45,10 +45,14 @@ export function SectionWhatsAppCta({
     >
       <div
         className={cn(
-          "mx-auto max-w-3xl rounded-2xl border border-white/10 bg-surface-elevated/90 px-5 py-7 shadow-card backdrop-blur-md sm:px-8 sm:py-9",
+          "relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-surface-elevated/90 px-5 py-7 shadow-card backdrop-blur-md sm:px-8 sm:py-9",
           "ring-1 ring-white/[0.06] transition hover:border-accent/25 hover:shadow-lg hover:shadow-black/35 hover:ring-accent/20",
         )}
       >
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent"
+          aria-hidden
+        />
         <div className="flex flex-col items-center gap-4 text-center">
           <p className="text-base font-semibold leading-snug text-white sm:text-lg">{headline}</p>
           <Button

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/Button";
@@ -12,7 +13,10 @@ export type PortfolioProject = {
   title: string;
   description: string;
   category: string;
+  /** גרדיאנט לשכבת צבע עדינה מעל התמונה */
   imageClass: string;
+  imageSrc: string;
+  imageAlt: string;
 };
 
 const PROJECTS: PortfolioProject[] = [
@@ -21,36 +25,48 @@ const PROJECTS: PortfolioProject[] = [
     description: "דף נחיתה עם גלריה וכפתור וואטסאפ — יותר תורים בלי פרסום מסובך.",
     category: "ספר",
     imageClass: "from-amber-600/40 via-amber-900/30 to-background",
+    imageSrc: "/demo-previews/barber.jpg",
+    imageAlt: "תצוגה מייצגת: דף נחיתה למספרה",
   },
   {
     title: "משרד עו״ד כהן",
     description: "מראה מקצועי, טפסי יצירת קשר ווואטסאפ — לקוחות מגיעים מוכנים.",
     category: "משפטים",
     imageClass: "from-slate-500/35 via-slate-800/40 to-background",
+    imageSrc: "/portfolio/law.jpg",
+    imageAlt: "תצוגה מייצגת: אתר למשרד עורכי דין",
   },
   {
     title: "מסעדת פפרוני",
     description: "תפריט, שעות פתיחה וכפתור הזמנה בוואטסאפ.",
     category: "מסעדה",
     imageClass: "from-red-600/30 via-rose-900/25 to-background",
+    imageSrc: "/portfolio/restaurant.jpg",
+    imageAlt: "תצוגה מייצגת: דף נחיתה למסעדה",
   },
   {
     title: "קליניקת סקין",
     description: "אתר קלין עם טפסים ושעות — פניות ישירות לוואטסאפ.",
     category: "קוסמטיקה",
     imageClass: "from-fuchsia-500/25 via-purple-900/30 to-background",
+    imageSrc: "/portfolio/clinic.jpg",
+    imageAlt: "תצוגה מייצגת: דף נחיתה לקליניקה או קוסמטיקה",
   },
   {
     title: "סטודיו לכושר",
     description: "חבילות אימון ומחירים ברורים, פנייה בקליק.",
     category: "כושר",
     imageClass: "from-emerald-500/35 via-teal-900/30 to-background",
+    imageSrc: "/demo-previews/fitness.jpg",
+    imageAlt: "תצוגה מייצגת: דף נחיתה לסטודיו כושר",
   },
   {
     title: "חנות פירות השכונה",
     description: "מבצעים, מיקום ווואטסאפ להזמנות מהירות.",
     category: "קמעונאות",
     imageClass: "from-lime-500/20 via-green-900/25 to-background",
+    imageSrc: "/portfolio/grocery.jpg",
+    imageAlt: "תצוגה מייצגת: דף נחיתה לחנות מזון או פירות",
   },
 ];
 
@@ -94,14 +110,25 @@ export function PortfolioSection() {
               className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/50 shadow-card transition hover:-translate-y-1 hover:border-accent/20 hover:shadow-xl hover:shadow-black/35"
             >
               <div
-                className={`relative aspect-[16/10] bg-gradient-to-br ${project.imageClass} transition duration-300 group-hover:brightness-[1.06]`}
+                className="relative aspect-[16/10] overflow-hidden bg-[#0c1222]"
                 role="img"
                 aria-label={`תצוגה מקדימה: ${project.title}`}
               >
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <div className="h-full w-full max-w-[200px] rounded-xl bg-black/35 ring-1 ring-white/10 backdrop-blur-[2px]" />
-                </div>
-                <span className="absolute start-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white/95 backdrop-blur-md">
+                <Image
+                  src={project.imageSrc}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition duration-500 ease-out group-hover:scale-[1.04] motion-reduce:group-hover:scale-100"
+                />
+                <div
+                  className={cn(
+                    "pointer-events-none absolute inset-0 bg-gradient-to-br opacity-45 transition duration-300 group-hover:opacity-50",
+                    project.imageClass,
+                  )}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/25" />
+                <span className="absolute start-3 top-3 z-[1] rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white/95 backdrop-blur-md">
                   {project.category}
                 </span>
               </div>
@@ -148,18 +175,27 @@ export function PortfolioSection() {
                 "animate-modal-in motion-reduce:animate-none",
               )}
             >
-            <div className={cn("relative shrink-0 bg-gradient-to-br", open.imageClass)}>
+            <div className="relative shrink-0 overflow-hidden bg-[#0c1222]">
               <div className="relative aspect-[16/10]">
-                <div className="absolute inset-0 flex items-center justify-center p-8">
-                  <div className="h-full w-full max-w-[220px] rounded-xl bg-black/35 ring-1 ring-white/10 backdrop-blur-[2px]" />
-                </div>
-                <span className="absolute start-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white/95 backdrop-blur-md">
+                <Image
+                  src={open.imageSrc}
+                  alt={open.imageAlt}
+                  fill
+                  sizes="(max-width: 512px) 100vw, 512px"
+                  className="object-cover"
+                  priority
+                />
+                <div
+                  className={cn("pointer-events-none absolute inset-0 bg-gradient-to-br opacity-45", open.imageClass)}
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/25" />
+                <span className="absolute start-3 top-3 z-[1] rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-medium text-white/95 backdrop-blur-md">
                   {open.category}
                 </span>
                 <button
                   type="button"
                   onClick={close}
-                  className="absolute end-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-black/65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+                  className="absolute end-3 top-3 z-[2] flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-black/65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
                   aria-label="סגור חלון"
                 >
                   <CloseIcon className="h-5 w-5" />

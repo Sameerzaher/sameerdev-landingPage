@@ -1,20 +1,15 @@
 import { Button } from "@/components/Button";
 import { HeroMockup } from "@/components/HeroMockup";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
-import {
-  CTA_HELPER,
-  CTA_PRIMARY_BUTTON,
-  CTA_REASSURANCE,
-  CTA_SECONDARY_BUTTON,
-  HERO_EMOTIONAL_HOOK,
-  TRUST_STRIP,
-} from "@/lib/cta-copy";
+import { CTA_HELPER, CTA_REASSURANCE, TRUST_STRIP } from "@/lib/cta-copy";
 import { CTA_WHATSAPP_MESSAGES } from "@/lib/cta-presets";
 import { getWhatsappLink } from "@/lib/whatsapp";
 
+const HERO_HEADLINE = "אני בונה לעסקים קטנים אתרים ודפי נחיתה שמביאים יותר פניות";
+const HERO_SUBTEXT = "בלי לסבך אותך, בלי תהליך כבד, ועם מענה ישיר מולי";
+
 export function Hero() {
-  const waPrimary = getWhatsappLink(CTA_WHATSAPP_MESSAGES.getSite);
-  const waSecondary = getWhatsappLink(CTA_WHATSAPP_MESSAGES.softFit);
+  const waPrimary = getWhatsappLink(CTA_WHATSAPP_MESSAGES.heroWantSite);
 
   return (
     <section
@@ -28,14 +23,9 @@ export function Hero() {
             SameerDev · בניית אתרים לעסקים קטנים
           </p>
           <h1 className="text-balance text-3xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl">
-            יותר פניות לעסק שלך — אתר מקצועי תוך 3–5 ימים
+            {HERO_HEADLINE}
           </h1>
-          <p className="mx-auto mt-4 max-w-xl rounded-xl border border-amber-500/20 bg-amber-500/[0.06] px-4 py-3 text-center text-[15px] font-medium leading-snug text-amber-100/95 sm:text-base lg:mx-0 lg:text-start">
-            {HERO_EMOTIONAL_HOOK}
-          </p>
-          <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">
-            מעייפים אתר שלא מביא לקוחות ופרסום מסובך? בונים דף נקי, מהיר ומותאם לנייד — עם וואטסאפ בקליק אחד.
-          </p>
+          <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted sm:text-lg lg:mx-0">{HERO_SUBTEXT}</p>
           <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
             <Button
               href={waPrimary}
@@ -45,10 +35,10 @@ export function Hero() {
               className="w-full min-h-[3.25rem] shadow-glow ring-2 ring-accent/25 transition hover:scale-[1.02] hover:brightness-110 hover:ring-accent/40 active:scale-[0.99] sm:w-auto sm:px-8"
             >
               <WhatsAppIcon className="h-5 w-5" />
-              {CTA_PRIMARY_BUTTON}
+              אני רוצה אתר לעסק שלי
             </Button>
-            <Button href="#pricing" variant="outline" size="lg" className="w-full sm:w-auto">
-              עבור למחירים
+            <Button href="#demo" variant="outline" size="lg" className="w-full sm:w-auto">
+              צפה בדוגמאות
             </Button>
           </div>
           <p className="mx-auto mt-3 max-w-xl text-center text-xs leading-relaxed text-muted sm:text-sm lg:text-start">
@@ -70,18 +60,6 @@ export function Hero() {
               השאר פרטים כאן
             </a>
           </p>
-          <div className="mt-3">
-            <Button
-              href={waSecondary}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="ghost"
-              size="md"
-              className="w-full text-sm text-slate-300 underline-offset-4 hover:bg-white/5 hover:text-white hover:underline sm:w-auto"
-            >
-              {CTA_SECONDARY_BUTTON}
-            </Button>
-          </div>
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-muted sm:text-sm lg:justify-start">
             {TRUST_STRIP.map((line) => (
               <li key={line} className="flex items-center gap-2">

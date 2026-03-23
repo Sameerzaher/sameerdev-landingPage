@@ -50,6 +50,7 @@ export function PricingSection() {
       <div className="mx-auto max-w-6xl">
         <h2 className="section-heading">מחירים שקופים</h2>
         <p className="section-sub max-w-xl">בחרו חבילה — ונתאים את הפרטים בוואטסאפ.</p>
+        <p className="mx-auto mt-2 max-w-xl text-center text-xs text-muted">יש גם פתרונות התחלתיים לעסקים קטנים · החל מ־₪1,500</p>
         <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:items-stretch">
           {plans.map((plan) => (
             <article

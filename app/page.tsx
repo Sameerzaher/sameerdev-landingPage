@@ -15,6 +15,7 @@ import { SolutionSection } from "@/components/sections/SolutionSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { UrgencySection } from "@/components/sections/UrgencySection";
 import { WhyChooseSection } from "@/components/sections/WhyChooseSection";
+import { WhatYouGetSection } from "@/components/sections/WhatYouGetSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CTA_HELPER, CTA_SECONDARY_BUTTON } from "@/lib/cta-copy";
@@ -69,6 +70,7 @@ export default function HomePage() {
         />
         <PricingSection />
         <LossWithoutWebsiteSection />
+        <WhatYouGetSection />
         <FinalCta />
       </main>
       <Footer />

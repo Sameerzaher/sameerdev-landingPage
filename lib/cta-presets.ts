@@ -5,6 +5,9 @@ export const CTA_WHATSAPP_MESSAGES = {
   /** Short, low-pressure — floating button & header. */
   quickHello:
     "היי, הגעתי מהאתר של SameerDev. אשמח לשאלה קצרה על בניית אתר לעסק — בלי התחייבות.",
+  /** Hero primary — “אני רוצה אתר לעסק שלי”. */
+  heroWantSite:
+    "היי, אני רוצה אתר לעסק שלי — אשמח לשמוע איך מתחילים ומה כולל התהליך.",
   getSite:
     "היי, אני רוצה לקבל אתר לעסק תוך 3–5 ימים. אפשר לשלוח לי פרטים?",
   sendDetails: "היי, אני רוצה לשלוח פרטים על העסק שלי ולקבל הצעה.",

@@ -1,9 +1,12 @@
+import Image from "next/image";
 import { Button } from "@/components/Button";
+import { DEMO_URLS, type DemoCaseId } from "@/lib/demo-links";
+import { DEMO_PREVIEW_IMAGES } from "@/lib/demo-preview-images";
 import { getWhatsappLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 
 type DemoCard = {
-  id: string;
+  id: DemoCaseId;
   title: string;
   businessType: string;
   bulletPoints: readonly string[];
@@ -11,8 +14,6 @@ type DemoCard = {
   waMessage: string;
   gradient: string;
   frameRing: string;
-  accentBar: string;
-  /** Short label shown in mock header (Hebrew, decorative). */
   mockBrand: string;
 };
 
@@ -25,9 +26,8 @@ const demos: readonly DemoCard[] = [
     resultLine: "לקוחות מבינים מה מקבלים — פחות הסברים חוזרים בטלפון",
     waMessage:
       "היי, רוצה משהו דומה לדוגמה FitWithNoa (מאמנת כושר) — מובייל + וואטסאפ.",
-    gradient: "from-emerald-500/25 via-teal-600/10 to-background",
-    frameRing: "ring-emerald-500/25",
-    accentBar: "from-emerald-400 to-teal-500",
+    gradient: "from-emerald-500/30 via-teal-600/15 to-background",
+    frameRing: "ring-emerald-400/30",
     mockBrand: "FitWithNoa",
   },
   {
@@ -37,9 +37,8 @@ const demos: readonly DemoCard[] = [
     bulletPoints: ["עלייה לאוויר תוך 3 ימים", "יותר פניות דרך וואטסאפ", "קל לשלוח ללקוחות לינק אחד מסודר"],
     resultLine: "פניות מסודרות מהעמוד — לינק אחד במקום הסברים בחצי שעה",
     waMessage: "היי, מעוניין בדוגמה בסגנון King Fade — ספר עם גלריה ווואטסאפ.",
-    gradient: "from-amber-500/20 via-orange-600/10 to-background",
-    frameRing: "ring-amber-500/20",
-    accentBar: "from-amber-400 to-orange-500",
+    gradient: "from-amber-500/25 via-orange-600/12 to-background",
+    frameRing: "ring-amber-400/25",
     mockBrand: "King Fade",
   },
   {
@@ -49,76 +48,82 @@ const demos: readonly DemoCard[] = [
     bulletPoints: ["מחירים וחבילות ברורים", "אזור שירות ושעות קבלה", "יותר פניות רלוונטיות מתלמידים"],
     resultLine: "תלמידים יודעים מה לשאול לפני שמחייגים",
     waMessage: "היי, רוצה דוגמה כמו DriveRight — מורה נהיגה עם מחירים ווואטסאפ.",
-    gradient: "from-sky-500/20 via-blue-600/10 to-background",
-    frameRing: "ring-sky-500/25",
-    accentBar: "from-sky-400 to-blue-500",
+    gradient: "from-sky-500/25 via-blue-600/12 to-background",
+    frameRing: "ring-sky-400/30",
     mockBrand: "DriveRight",
   },
 ] as const;
 
+function demoUrlFor(id: DemoCaseId): string {
+  return DEMO_URLS[id];
+}
+
 function PhoneMockupPreview({
-  accentBar,
   frameRing,
   brand,
+  preview,
+  priority,
 }: {
-  accentBar: string;
   frameRing: string;
   brand: string;
+  preview: { src: string; alt: string };
+  priority?: boolean;
 }) {
   return (
-    <div
-      className={cn(
-        "mx-auto w-full max-w-[260px] rounded-[1.35rem] border border-white/10 bg-[#070b14] p-2 shadow-2xl ring-2 transition group-hover:ring-accent/35 sm:max-w-none",
-        frameRing,
-      )}
-    >
-      <div className="flex items-center justify-between px-2 pb-1.5 pt-0.5">
-        <span className="text-[8px] font-semibold tracking-wide text-white/45" dir="ltr">
-          {brand}
-        </span>
-        <span className="text-[9px] font-medium tabular-nums text-white/35">9:41</span>
-        <span className="flex gap-0.5" aria-hidden>
-          <span className="h-1 w-1 rounded-full bg-white/25" />
-          <span className="h-1 w-1 rounded-full bg-white/25" />
-          <span className="h-1 w-1 rounded-full bg-white/25" />
-        </span>
-      </div>
-      <div className="overflow-hidden rounded-[1.05rem] bg-[#0c1222] ring-1 ring-white/5">
-        <div className={cn("relative h-[5.25rem] bg-gradient-to-bl p-3 opacity-95", accentBar)}>
-          <div className="flex items-start justify-between gap-2">
-            <div className="space-y-1.5">
-              <div className="h-1.5 w-12 rounded bg-white/40" />
-              <div className="h-2 w-24 max-w-[85%] rounded bg-white/25" />
-              <div className="h-1.5 w-20 rounded bg-white/18" />
-            </div>
-            <span className="rounded-md bg-black/20 px-1.5 py-0.5 text-[7px] font-medium text-white/90 ring-1 ring-white/15">
-              דף נחיתה
+    <div className="relative mx-auto flex w-full max-w-[232px] flex-col items-center">
+      {/* Ambient glow behind device */}
+      <div
+        className="pointer-events-none absolute -inset-8 rounded-full bg-gradient-to-b from-white/[0.07] to-transparent blur-2xl"
+        aria-hidden
+      />
+
+      <div
+        dir="ltr"
+        className={cn(
+          "relative w-full rounded-[1.75rem] border border-white/[0.12] bg-gradient-to-b from-[#141c2e] to-[#060912] p-2.5 pb-2 shadow-[0_28px_70px_-18px_rgba(0,0,0,0.75)] ring-2 ring-white/[0.06] transition duration-300 ease-out group-hover:-translate-y-0.5 group-hover:shadow-[0_36px_90px_-22px_rgba(0,0,0,0.85)] group-hover:ring-accent/25",
+          frameRing,
+        )}
+      >
+        {/* Status bar — LTR inside mockup matches real device chrome */}
+        <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-1 pb-2 pt-1">
+          <span className="justify-self-start text-[9px] font-semibold tracking-wide text-white/50">{brand}</span>
+          <div
+            className="h-[22px] w-[88px] shrink-0 rounded-full bg-black/90 ring-1 ring-white/10"
+            aria-hidden
+          />
+          <div className="flex items-center justify-end gap-2 justify-self-end">
+            <span className="text-[10px] font-medium tabular-nums text-white/40">9:41</span>
+            <span className="flex gap-0.5" aria-hidden>
+              <span className="h-1 w-1 rounded-full bg-white/30" />
+              <span className="h-1 w-1 rounded-full bg-white/30" />
+              <span className="h-1 w-1 rounded-full bg-white/30" />
             </span>
           </div>
         </div>
-        <div className="space-y-2 p-3">
-          <div className="flex items-center justify-between border-b border-white/6 pb-2">
-            <span className="text-[8px] font-medium text-white/40">שירותים</span>
-            <div className="flex gap-1">
-              <span className="h-1 w-4 rounded-full bg-white/12" />
-              <span className="h-1 w-4 rounded-full bg-white/12" />
-              <span className="h-1 w-4 rounded-full bg-white/12" />
-            </div>
-          </div>
-          <div className="h-1.5 w-[92%] rounded bg-white/12" />
-          <div className="h-1.5 w-full rounded bg-white/7" />
-          <div className="h-1.5 w-[70%] rounded bg-white/7" />
-          <div className="grid grid-cols-2 gap-2 pt-0.5">
-            <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-white/[0.08] to-white/[0.02] ring-1 ring-white/10" />
-            <div className="aspect-[4/3] rounded-lg bg-gradient-to-br from-white/[0.08] to-white/[0.02] ring-1 ring-white/10" />
-          </div>
-          <div className="mx-auto mt-1 flex h-9 w-[88%] items-center justify-center gap-1 rounded-xl bg-[#25D366] text-[10px] font-bold text-[#06210f] shadow-md shadow-black/25 ring-1 ring-black/10">
-            <span className="inline-block h-2 w-2 rounded-full bg-[#06210f]/30" aria-hidden />
-            WhatsApp
+
+        {/* Screen bezel */}
+        <div className="rounded-xl bg-black/50 p-[3px] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ring-1 ring-black/50">
+          <div className="relative aspect-[9/16] w-full overflow-hidden rounded-[0.65rem] bg-[#0c1222] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.4)]">
+            <Image
+              src={preview.src}
+              alt={preview.alt}
+              fill
+              sizes="232px"
+              priority={priority}
+              className="object-cover object-top transition duration-500 ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100"
+            />
+            {/* Screen glass edge */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-[0.65rem] shadow-[inset_0_0_40px_rgba(0,0,0,0.15)]"
+              aria-hidden
+            />
           </div>
         </div>
+
+        <p className="px-1 pb-0.5 pt-2.5 text-center text-[9px] font-medium tracking-wide text-white/35">
+          תצוגה לדוגמה בלבד
+        </p>
       </div>
-      <p className="px-1 pb-0.5 pt-1.5 text-center text-[8px] text-white/30">תצוגה לדוגמה בלבד</p>
     </div>
   );
 }
@@ -131,50 +136,98 @@ export function DemoSection() {
         <p className="section-sub max-w-xl">
           תוצאות אמיתיות לסוגי עסקים — זמן עלייה לאוויר, פניות וסדר בעבודה.
         </p>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {demos.map((d) => (
-            <figure
-              key={d.id}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface/40 shadow-card transition hover:border-accent/30 hover:shadow-xl hover:shadow-black/30 focus-within:border-accent/35"
-            >
-              <div className={`relative bg-gradient-to-b ${d.gradient} p-4 pt-6 sm:p-5`}>
-                <PhoneMockupPreview accentBar={d.accentBar} frameRing={d.frameRing} brand={d.mockBrand} />
-              </div>
-              <figcaption className="flex flex-1 flex-col border-t border-white/5 bg-surface/30 px-4 py-5 text-start">
-                <span className="inline-flex w-fit rounded-md border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400">
-                  מקרה בוחן
-                </span>
-                <span className="mt-2 text-base font-semibold leading-snug text-white">{d.title}</span>
-                <span className="mt-1 text-xs font-medium text-accent/90">{d.businessType}</span>
-                <ul className="mt-3 space-y-1.5 text-sm text-slate-200">
-                  {d.bulletPoints.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="text-accent" aria-hidden>
-                        ✔
-                      </span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-3 rounded-lg border border-accent/15 bg-accent/[0.06] px-2.5 py-2 text-xs leading-relaxed text-slate-200">
-                  <span className="font-semibold text-accent">תוצאה: </span>
-                  {d.resultLine}
-                </p>
-                <div className="mt-4">
-                  <Button
-                    href={getWhatsappLink(d.waMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="primary"
-                    size="md"
-                    className="w-full font-semibold shadow-glow ring-2 ring-accent/35 transition hover:brightness-110 hover:ring-accent/50"
-                  >
-                    צפה בדוגמה
-                  </Button>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {demos.map((d, index) => {
+            const demoUrl = demoUrlFor(d.id);
+            const waHref = getWhatsappLink(d.waMessage);
+            const isPlaceholder = !demoUrl.startsWith("http");
+            const preview = DEMO_PREVIEW_IMAGES[d.id];
+
+            return (
+              <figure
+                key={d.id}
+                className={cn(
+                  "group flex flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-surface/35 shadow-card backdrop-blur-[2px] transition duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.55)] focus-within:border-accent/30",
+                  /* כרטיס שלישי במסך ביניים: ממורכז מתחת לשניים הראשונים */
+                  index === 2 && "sm:col-span-2 sm:mx-auto sm:max-w-[min(100%,22rem)] lg:col-span-1 lg:max-w-none",
+                )}
+              >
+                <div
+                  className={cn(
+                    "relative overflow-hidden bg-gradient-to-b px-4 pb-8 pt-8 sm:px-5 sm:pb-10 sm:pt-10",
+                    d.gradient,
+                  )}
+                >
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-40"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255,255,255,0.12), transparent 55%)",
+                    }}
+                    aria-hidden
+                  />
+                  <PhoneMockupPreview
+                    frameRing={d.frameRing}
+                    brand={d.mockBrand}
+                    preview={preview}
+                    priority={index === 0}
+                  />
                 </div>
-              </figcaption>
-            </figure>
-          ))}
+
+                <figcaption className="flex flex-1 flex-col border-t border-white/[0.06] bg-gradient-to-b from-surface/40 to-surface/25 px-5 py-6 text-start">
+                  <span className="inline-flex w-fit rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                    מקרה בוחן
+                  </span>
+                  <span className="mt-3 text-lg font-bold leading-snug tracking-tight text-white sm:text-xl">
+                    {d.title}
+                  </span>
+                  <span className="mt-1.5 text-xs font-medium leading-relaxed text-slate-300/95">
+                    {d.businessType}
+                  </span>
+                  <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-200/95">
+                    {d.bulletPoints.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5">
+                        <span className="mt-0.5 shrink-0 text-accent" aria-hidden>
+                          ✔
+                        </span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 rounded-xl border border-accent/20 bg-accent/[0.07] px-3 py-2.5 text-xs leading-relaxed text-slate-100/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+                    <span className="font-semibold text-accent">תוצאה: </span>
+                    {d.resultLine}
+                  </p>
+                  <div className="mt-5 flex flex-col gap-2.5">
+                    <Button
+                      href={demoUrl}
+                      target={isPlaceholder ? undefined : "_blank"}
+                      rel={isPlaceholder ? undefined : "noopener noreferrer"}
+                      variant="outline"
+                      size="md"
+                      className="w-full border-2 border-white/18 font-semibold text-slate-100 transition hover:border-accent/45 hover:bg-white/[0.07]"
+                      aria-label={isPlaceholder ? "דוגמה חיה — בקרוב" : "צפה בדוגמה באתר חיצוני"}
+                    >
+                      צפה בדוגמה
+                      {isPlaceholder ? (
+                        <span className="ms-1 text-[10px] font-normal text-muted">(בקרוב)</span>
+                      ) : null}
+                    </Button>
+                    <Button
+                      href={waHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="primary"
+                      size="md"
+                      className="w-full font-semibold shadow-glow ring-2 ring-accent/35 transition hover:brightness-110 hover:ring-accent/50"
+                    >
+                      אני רוצה כזה
+                    </Button>
+                  </div>
+                </figcaption>
+              </figure>
+            );
+          })}
         </div>
       </div>
     </section>
